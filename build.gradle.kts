@@ -5,8 +5,10 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "com.nitkanikita"
-version = "1.0-SNAPSHOT"
+allprojects {
+    group = rootProject.findProperty("project.group")!!
+    version = rootProject.findProperty("project.version")!!
+}
 
 repositories {
     mavenCentral()
@@ -38,8 +40,4 @@ tasks {
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.20.1")
     }
-}
-
-tasks.test {
-    useJUnitPlatform()
 }

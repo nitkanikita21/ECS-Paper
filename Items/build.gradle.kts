@@ -3,8 +3,6 @@ plugins {
     id("io.papermc.paperweight.userdev") version "1.5.5"
 }
 
-group = "com.nitkanikita"
-
 repositories {
     mavenCentral()
     maven("https://repo.codemc.org/repository/maven-public/")
@@ -16,8 +14,4 @@ dependencies {
 
     implementation(project(":Core"))
     implementation(project(":PaperCommons"))
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
