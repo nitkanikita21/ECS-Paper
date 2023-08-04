@@ -22,6 +22,7 @@ public interface Bundle<T, C extends Component<T, ?>> {
     TemporaryBundleData getTempData();
 
     boolean hasComponent(T target, String id);
+
     default boolean hasComponent(T target, C component) {
         return hasComponent(target, component.getName());
     }

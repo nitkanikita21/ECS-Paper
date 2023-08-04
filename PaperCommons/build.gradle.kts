@@ -3,8 +3,7 @@ plugins {
     id("io.papermc.paperweight.userdev") version "1.5.5"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "com.nitkanikita"
 
 repositories {
     mavenCentral()

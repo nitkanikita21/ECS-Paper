@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class ItemBundle implements Bundle<ItemStack, BaseItemComponent> {
-
-
     private final List<BaseItemComponent> components = new LinkedList<>();
     private TemporaryBundleData temporaryBundleData;
 
@@ -21,8 +19,7 @@ public class ItemBundle implements Bundle<ItemStack, BaseItemComponent> {
         NBTList<String> nbtComponentsList = nbtItem.getStringList(ItemBundleApi.NBT_COMPONENTS_TAG);
         nbtComponentsList.clear();
         for (int i = 0; i < components.size(); i++) {
-            nbtComponentsList
-                    .add(i + ItemBundleApi.NBT_COMPONENT_CODE_SPLITTER + components.get(i).getName());
+            nbtComponentsList.add(i + ItemBundleApi.NBT_COMPONENT_CODE_SPLITTER + components.get(i).getName());
         }
         nbtItem.applyNBT(target);
     }

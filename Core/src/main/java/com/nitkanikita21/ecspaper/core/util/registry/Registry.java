@@ -1,6 +1,5 @@
 package com.nitkanikita21.ecspaper.core.util.registry;
 
-import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,13 +14,16 @@ public abstract class Registry<I, T> {
         return new MapRegistry<>(name, overridable);
     }
 
-    @Getter
     private final String name;
 
     protected final Logger logger = LoggerFactory.getLogger("ECS-Registry");
 
     protected Registry(String name) {
         this.name = Objects.requireNonNull(name);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public abstract T register(I id, T object);

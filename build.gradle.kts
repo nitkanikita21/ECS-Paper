@@ -5,7 +5,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
-group = "org.example"
+group = "com.nitkanikita"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -20,9 +20,6 @@ dependencies {
     implementation(project(":Core"))
     implementation(project(":PaperCommons"))
     implementation(project(":Items"))
-
-    compileOnly("org.projectlombok:lombok:1.18.28")
-    annotationProcessor("org.projectlombok:lombok:1.18.28")
 }
 
 tasks.shadowJar {
@@ -30,6 +27,7 @@ tasks.shadowJar {
         include(dependency(":Core"))
         include(dependency(":PaperCommons"))
         include(dependency(":Items"))
+        include(dependency("org.jetbrains:annotations:24.0.0"))
     }
 }
 
@@ -45,4 +43,3 @@ tasks {
 tasks.test {
     useJUnitPlatform()
 }
-
