@@ -1,9 +1,9 @@
 package com.nitkanikita21.ecspaper.core;
 
-public interface Component<T, B extends Bundle<T, ?>> {
+public interface Component<T, K, B extends Bundle<T, K, ?>> {
     void init(T target, B bundle);
 
-    String getName();
+    K getKey();
 
     void update(T target, B bundle);
 }

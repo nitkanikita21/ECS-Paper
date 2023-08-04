@@ -19,7 +19,7 @@ public class EcsPaperPlugin extends JavaPlugin {
         itemBundleApi = new ItemBundleApi();
 
         itemBundleApi.registerStaticComponent(
-                Key.key("test", "say_my_name"), new SayComponent("say_my_name")
+                new SayComponent(Key.key("test", "say_my_name"))
         );
     }
 

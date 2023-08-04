@@ -3,8 +3,8 @@ package com.nitkanikita21.ecspaper.core;
 import java.util.List;
 import java.util.Optional;
 
-public interface Bundle<T, C extends Component<T, ?>> {
-    interface BundleApi<T, C extends Component<T, ?>, B extends Bundle<T, C>> {
+public interface Bundle<T, K, C extends Component<T, K, ?>> {
+    interface BundleApi<T, K, C extends Component<T, K, ?>, B extends Bundle<T, K, C>> {
         B getBundle(T target);
 
         B createEmptyBundle();
@@ -21,10 +21,10 @@ public interface Bundle<T, C extends Component<T, ?>> {
 
     TemporaryBundleData getTempData();
 
-    boolean hasComponent(T target, String id);
+    boolean hasComponent(T target, K key);
 
     default boolean hasComponent(T target, C component) {
-        return hasComponent(target, component.getName());
+        return hasComponent(target, component.getKey());
     }
 
     default C addComponent(C component) {
@@ -34,7 +34,7 @@ public interface Bundle<T, C extends Component<T, ?>> {
     default <CC extends C> Optional<CC> getComponent(String name) {
         return (Optional<CC>) getComponents()
                 .stream()
-                .filter(it -> it.getName().equals(name))
+                .filter(it -> it.getKey().equals(name))
                 .findFirst();
     }
 

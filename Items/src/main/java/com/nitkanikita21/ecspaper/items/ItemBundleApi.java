@@ -1,6 +1,7 @@
 package com.nitkanikita21.ecspaper.items;
 
 import com.nitkanikita21.ecspaper.core.Bundle;
+import com.nitkanikita21.ecspaper.core.util.registry.MapRegistry;
 import com.nitkanikita21.ecspaper.core.util.registry.Registry;
 import com.nitkanikita21.ecspaper.paper.EventRegister;
 import de.tr7zw.nbtapi.NBTItem;
@@ -9,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Optional;
 
-public class ItemBundleApi implements Bundle.BundleApi<ItemStack, BaseItemComponent, ItemBundle> {
+public class ItemBundleApi implements Bundle.BundleApi<ItemStack, Key, BaseItemComponent, ItemBundle> {
 
     private static final Registry<Key, ItemBundle> bundlesRegistry =
             Registry.createMapRegistry("item_bundles", true);
@@ -32,9 +33,9 @@ public class ItemBundleApi implements Bundle.BundleApi<ItemStack, BaseItemCompon
         return bundlesRegistry.register(id, bundle);
     }
 
-    public BaseItemComponent registerStaticComponent(Key id, BaseItemComponent component) {
+    public BaseItemComponent registerStaticComponent(BaseItemComponent component) {
         EventRegister.register(component);
-        return componentsRegistry.register(id, component);
+        return componentsRegistry.register(component.getKey(), component);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class ItemBundleApi implements Bundle.BundleApi<ItemStack, BaseItemCompon
 
     @Override
     public void applyTo(ItemStack target, ItemBundle bundle) {
-
+        bundle.applyTo(target);
     }
 
 

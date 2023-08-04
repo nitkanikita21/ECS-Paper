@@ -13,8 +13,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class SayComponent extends BaseItemComponent {
-    public SayComponent(String name) {
-        super(name);
+    public SayComponent(Key key) {
+        super(key);
     }
 
     @EventHandler
