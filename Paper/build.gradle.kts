@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    `java-library`
     id("io.papermc.paperweight.userdev") version "1.5.5"
 }
 
@@ -9,4 +9,7 @@ repositories {
 
 dependencies {
     paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
+    api(project(":Core"))
+    api(project(":PaperCommons"))
+    api(project(":Items"))
 }
