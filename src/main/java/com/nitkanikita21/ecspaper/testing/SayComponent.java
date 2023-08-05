@@ -3,9 +3,8 @@ package com.nitkanikita21.ecspaper.testing;
 import com.nitkanikita21.ecspaper.EcsPaperPlugin;
 import com.nitkanikita21.ecspaper.items.BaseItemComponent;
 import com.nitkanikita21.ecspaper.items.ItemBundle;
-import com.nitkanikita21.ecspaper.items.ItemBundleApi;
 import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -31,14 +30,12 @@ public class SayComponent extends BaseItemComponent {
     @EventHandler
     private void onJoin(PlayerJoinEvent event) {
         ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        ItemBundleApi bundleApi = EcsPaperPlugin.getItemBundleApi();
-        bundleApi.getComponentsRegistry()
-                .get(Key.key("test", "say_my_name"))
-                .ifPresent(component -> {
-                    ItemBundle emptyBundle = bundleApi.createEmptyBundle();
-                    emptyBundle.addComponent(component);
-                    emptyBundle.applyTo(item);
-                });
+        EcsPaperPlugin
+                .getItemBundleApi()
+                .getBundlesRegistry()
+                .get(Key.key("test", "aboba"))
+                .get()
+                .applyTo(item);
 
         event.getPlayer().getInventory().setItemInMainHand(item);
     }
@@ -50,11 +47,12 @@ public class SayComponent extends BaseItemComponent {
 
     @Override
     public void update(ItemStack target, ItemBundle bundle) {
-        target.editMeta(meta -> {
-            meta.displayName(MiniMessage.miniMessage().deserialize(
-                    "<gold>POSHEL NAHUI"
-            ));
-        });
+        bundle
+                .<DisplayComponent>getComponent(
+                        Key.key("test", "display")
+                )
+                .get()
+                .setDisplayName(bundle, Component.text("A"));
 
     }
 }

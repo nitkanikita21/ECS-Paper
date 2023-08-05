@@ -29,6 +29,9 @@ public class ItemBundle implements Bundle<ItemStack, Key, BaseItemComponent> {
     public void applyTo(ItemStack target) {
         temporaryBundleData = new TemporaryBundleData();
         components.forEach(component -> {
+            component.init(target, this);
+        });
+        components.forEach(component -> {
             component.update(target, this);
         });
         writeComponents(target);

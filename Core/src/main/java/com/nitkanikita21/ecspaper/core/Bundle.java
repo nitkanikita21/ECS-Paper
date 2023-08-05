@@ -31,10 +31,10 @@ public interface Bundle<T, K, C extends Component<T, K, ?>> {
         return addComponent(getComponents().size(), component);
     }
 
-    default <CC extends C> Optional<CC> getComponent(String name) {
+    default <CC extends C> Optional<CC> getComponent(K key) {
         return (Optional<CC>) getComponents()
                 .stream()
-                .filter(it -> it.getKey().equals(name))
+                .filter(it -> it.getKey().equals(key))
                 .findFirst();
     }
 
