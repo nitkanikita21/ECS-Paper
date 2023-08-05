@@ -7,9 +7,9 @@ ECS (Entity Component System) framework for creating custom behavior (as in game
 ## Goal
 This project is created solving the problem of implementing custom items, entities, etc. The implementation of these things is located in one place and is not scattered throughout the project.
 ## Modules
-* [root](src/main/java/com/nitkanikita21/ecspaper) - Paper plugin & entrypoint for other plugins
+* [root](src/main/java/com/nitkanikita21/ecspaper) - Paper plugin
+* [Paper](Paper/src/main/java/com/nitkanikita21/ecspaper/paper) - entrypoint on the ECS API
 * [Core](Core/src/main/java/com/nitkanikita21/ecspaper/core) - ECS model api
-* [PaperCommons](PaperCommons/src/main/java/com/nitkanikita21/ecspaper/paper) - commonds classes for Paper platform
 * [Items](Items/src/main/java/com/nitkanikita21/ecspaper/items) - ECS implementation for ItemStack
 ## License
 [MIT License](LICENSE)

@@ -1,5 +1,6 @@
 package com.nitkanikita21.ecspaper.testing;
 
+import com.nitkanikita21.ecspaper.ECS;
 import com.nitkanikita21.ecspaper.EcsPaperPlugin;
 import com.nitkanikita21.ecspaper.items.BaseItemComponent;
 import com.nitkanikita21.ecspaper.items.ItemBundle;
@@ -21,7 +22,7 @@ public class SayComponent extends BaseItemComponent {
         ItemStack target = event.getPlayer()
                 .getInventory()
                 .getItemInMainHand();
-        ItemBundle bundle = EcsPaperPlugin.getItemBundleApi()
+        ItemBundle bundle = ECS.getAPI().getItemBundleApi()
                 .getBundle(target);
 
         bundle.applyTo(target);
@@ -30,7 +31,7 @@ public class SayComponent extends BaseItemComponent {
     @EventHandler
     private void onJoin(PlayerJoinEvent event) {
         ItemStack item = new ItemStack(Material.DIAMOND_SWORD);
-        EcsPaperPlugin
+        ECS.getAPI()
                 .getItemBundleApi()
                 .getBundlesRegistry()
                 .get(Key.key("test", "aboba"))

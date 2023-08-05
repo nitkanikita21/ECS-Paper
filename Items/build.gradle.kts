@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    `java-library`
     id("io.papermc.paperweight.userdev") version "1.5.5"
 }
 
@@ -12,6 +12,6 @@ dependencies {
     paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.11.3")
 
-    implementation(project(":Core"))
-    implementation(project(":PaperCommons"))
+    api(project(":Core"))
+    api(project(":PaperCommons"))
 }

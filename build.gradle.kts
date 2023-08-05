@@ -3,6 +3,7 @@ plugins {
     id("io.papermc.paperweight.userdev") version "1.5.5"
     id("xyz.jpenilla.run-paper") version "2.1.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    `maven-publish`
 }
 
 allprojects {
@@ -20,6 +21,7 @@ dependencies {
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.11.3")
 
     implementation(project(":Core"))
+    implementation(project(":Paper"))
     implementation(project(":PaperCommons"))
     implementation(project(":Items"))
 }
@@ -27,9 +29,9 @@ dependencies {
 tasks.shadowJar {
     dependencies {
         include(dependency(":Core"))
+        include(dependency(":Paper"))
         include(dependency(":PaperCommons"))
         include(dependency(":Items"))
-        include(dependency("org.jetbrains:annotations:24.0.0"))
     }
 }
 
@@ -40,4 +42,27 @@ tasks {
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.20.1")
     }
+}
+
+
+
+subprojects {
+    apply(plugin = "maven-publish")
+    apply(plugin = "java")
+    configure<PublishingExtension> {
+        publishing {
+            publications {
+                create<MavenPublication>("maven") {
+                    groupId = rootProject.group as String
+                    version = rootProject.version as String
+
+                    from(components["java"])
+                }
+            }
+        }
+    }
+}
+
+tasks.build.configure {
+    dependsOn(tasks.shadowJar)
 }

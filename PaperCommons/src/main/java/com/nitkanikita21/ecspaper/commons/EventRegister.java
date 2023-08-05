@@ -1,16 +1,16 @@
-package com.nitkanikita21.ecspaper.paper;
+package com.nitkanikita21.ecspaper.commons;
 
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EventRegister {
-    private static JavaPlugin plugin;
+    private final JavaPlugin plugin;
 
     public EventRegister(JavaPlugin plugin){
-        EventRegister.plugin = plugin;
+        this.plugin = plugin;
     }
 
-    public static void register(Listener listener) {
+    public void register(Listener listener) {
         plugin.getServer().getPluginManager().registerEvents(listener, plugin);
     }
 }
