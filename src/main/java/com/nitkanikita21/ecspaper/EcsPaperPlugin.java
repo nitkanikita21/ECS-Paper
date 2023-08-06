@@ -6,8 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class EcsPaperPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
-        ECS ecs = new ECS(new EventRegister(this));
-
+       new ECS(new EventRegister(this));
     }
 
 

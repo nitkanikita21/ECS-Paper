@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Represents a temporary storage object for all bundle components.
+ * Before each application of the bundle on the target,
+ * one instance of this class is created
+ * which is available from the {@link Bundle} method
+ */
 public class TemporaryBundleData {
     private final Map<String, Object> storage = new HashMap<>();
 

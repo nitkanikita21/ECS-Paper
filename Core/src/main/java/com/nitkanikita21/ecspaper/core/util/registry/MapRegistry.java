@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class MapRegistry<I, T> extends Registry<I, T> {
+public class MapRegistry<K, T> extends Registry<K, T> {
 
-    private final Map<I, T> storage = new HashMap<>();
+    private final Map<K, T> storage = new HashMap<>();
     private final boolean overridable;
 
     MapRegistry(@NotNull String name, boolean overridable) {
@@ -23,34 +23,34 @@ public class MapRegistry<I, T> extends Registry<I, T> {
     }
 
     @Override
-    public T register(I id, @NotNull T object) {
+    public T register(K key, @NotNull T object) {
         T value = Objects.requireNonNull(object);
-        if (storage.containsKey(id) && overridable) {
+        if (storage.containsKey(key) && overridable) {
             logger.error(String.format(
                     "[%s] Attempting to replace an existing value with ID %s",
                     getName(),
-                    id.toString()
+                    key.toString()
             ));
-            return storage.get(id);
+            return storage.get(key);
         }
-        storage.put(id, value);
+        storage.put(key, value);
         return value;
     }
 
     @Override
-    public Optional<T> unregister(I id) {
-        if (!storage.containsKey(id)) {
+    public Optional<T> unregister(K key) {
+        if (!storage.containsKey(key)) {
             logger.error(String.format(
                     "Attempting to delete an non-existing value with ID %s",
-                    id.toString()
+                    key.toString()
             ));
             return Optional.empty();
         }
-        return Optional.ofNullable(storage.put(id, null));
+        return Optional.ofNullable(storage.put(key, null));
     }
 
     @Override
-    public Optional<T> get(I id) {
-        return Optional.ofNullable(storage.get(id));
+    public Optional<T> get(K key) {
+        return Optional.ofNullable(storage.get(key));
     }
 }

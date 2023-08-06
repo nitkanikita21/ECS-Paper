@@ -6,11 +6,16 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 import java.util.Optional;
 
-public abstract class Registry<I, T> {
+/**
+ * Represents an object store by key.
+ * @param <K> key
+ * @param <T> object
+ */
+public abstract class Registry<K, T> {
 
     private static CoreRegistry coreRegistry;
 
-    public static <I, T> Registry<I, T> createMapRegistry(String name, boolean overridable) {
+    public static <K, T> Registry<K, T> createMapRegistry(String name, boolean overridable) {
         return new MapRegistry<>(name, overridable);
     }
 
@@ -22,13 +27,30 @@ public abstract class Registry<I, T> {
         this.name = Objects.requireNonNull(name);
     }
 
+    /**
+     * @return registry name
+     */
     public String getName() {
         return name;
     }
 
-    public abstract T register(I id, T object);
+    /** Registers an object in the registry
+     * @param key key
+     * @param object object
+     * @return registered object
+     */
+    public abstract T register(K key, T object);
 
-    public abstract Optional<T> unregister(I id);
+    /**
+     * Deletes an object by the specified key from the registry
+     * @param id id
+     * @return unregistered object
+     */
+    public abstract Optional<T> unregister(K id);
 
-    public abstract Optional<T> get(I id);
+    /** Gets an object by the specified key
+     * @param key key
+     * @return object registered with the specified key
+     */
+    public abstract Optional<T> get(K key);
 }
