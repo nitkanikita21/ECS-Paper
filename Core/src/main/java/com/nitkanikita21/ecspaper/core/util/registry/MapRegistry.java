@@ -2,10 +2,7 @@ package com.nitkanikita21.ecspaper.core.util.registry;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class MapRegistry<K, T> extends Registry<K, T> {
 
@@ -52,5 +49,20 @@ public class MapRegistry<K, T> extends Registry<K, T> {
     @Override
     public Optional<T> get(K key) {
         return Optional.ofNullable(storage.get(key));
+    }
+
+    @Override
+    public List<K> getKeys() {
+        return storage.keySet().stream().toList();
+    }
+
+    @Override
+    public List<T> getValues() {
+        return storage.values().stream().toList();
+    }
+
+    @Override
+    public List<Map.Entry<K, T>> getEntrySet() {
+        return storage.entrySet().stream().toList();
     }
 }
