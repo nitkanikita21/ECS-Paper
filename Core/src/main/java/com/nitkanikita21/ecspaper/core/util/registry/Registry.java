@@ -13,7 +13,14 @@ import java.util.Optional;
  */
 public abstract class Registry<K, T> {
 
-    private static CoreRegistry coreRegistry;
+    private static RootRegistry rootRegistry;
+
+    /** 99.99% of the time you don't need it. Gets the root registry of all registries.
+     * @return root registry
+     */
+    public static RootRegistry getRootRegistry() {
+        return rootRegistry;
+    }
 
     public static <K, T> Registry<K, T> createMapRegistry(String name, boolean overridable) {
         return new MapRegistry<>(name, overridable);
