@@ -1,4 +1,6 @@
 # ECS-Paper (WIP)
+[![Build](https://github.com/nitkanikita21/ECS-Paper/actions/workflows/gradle.yml/badge.svg)](https://github.com/nitkanikita21/ECS-Paper/actions/workflows/gradle.yml)
+
 ECS (Entity Component System) framework for creating custom behavior (as in gamedev) for Bukkit objects (ItemStack and others).
 
 *This api is not implemented perfectly due to my knowledge. You can write all your suggestions to me at:*
