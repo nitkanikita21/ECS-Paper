@@ -19,6 +19,11 @@ public abstract class BaseItemComponent implements Component<ItemStack, Key, Ite
     }
 
 
+    /**
+     * Called when the given component has been registered as static.
+     */
+    public void onRegistered() {};
+
     /** Getter for component ID
      * @return component id
      */
