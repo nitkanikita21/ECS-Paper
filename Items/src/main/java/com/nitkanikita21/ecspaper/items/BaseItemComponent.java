@@ -21,8 +21,14 @@ public abstract class BaseItemComponent implements Component<ItemStack, Key, Ite
 
     /**
      * Called when the given component has been registered as static.
+     * Can be changed
      */
     public void onRegistered() {};
+
+    @Override
+    public void init(ItemStack target, ItemBundle bundle) {
+
+    }
 
     /** Getter for component ID
      * @return component id
