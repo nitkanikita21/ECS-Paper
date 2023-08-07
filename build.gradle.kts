@@ -51,6 +51,26 @@ subprojects {
     apply(plugin = "java")
     configure<PublishingExtension> {
         publishing {
+            repositories {
+                maven {
+                    name = "hardprogSnapshotsRepository"
+                    url = uri("https://maven.hardprog.uk/snapshots")
+                    credentials(PasswordCredentials::class)
+                    authentication {
+                        create<BasicAuthentication>("basic")
+                    }
+                }
+            }
+            repositories {
+                maven {
+                    name = "hardprogReleasesRepository"
+                    url = uri("https://maven.hardprog.uk/releases")
+                    credentials(PasswordCredentials::class)
+                    authentication {
+                        create<BasicAuthentication>("basic")
+                    }
+                }
+            }
             publications {
                 create<MavenPublication>("maven") {
                     groupId = rootProject.group as String
