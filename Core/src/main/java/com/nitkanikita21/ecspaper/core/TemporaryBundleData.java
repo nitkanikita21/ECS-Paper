@@ -17,17 +17,19 @@ public class TemporaryBundleData {
         return Optional.ofNullable((T) storage.get(id));
     }
 
-    public <T> void set(String id, T value) {
-        storage.put(id, value);
-    }
-
     public boolean isExisting(String id) {
         return storage.containsKey(id);
     }
 
-    public <T> void init(String id, T startValue) {
+    public <T> TemporaryBundleData set(String id, T value) {
+        storage.put(id, value);
+        return this;
+    }
+
+    public <T> TemporaryBundleData init(String id, T startValue) {
         if (!isExisting(id)) {
             storage.put(id, startValue);
         }
+        return this;
     }
 }
