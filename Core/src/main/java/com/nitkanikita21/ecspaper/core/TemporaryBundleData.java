@@ -9,6 +9,7 @@ import java.util.Optional;
  * Before each application of the bundle on the target,
  * one instance of this class is created
  * which is available from the {@link Bundle} method
+ * TODO: rework the class for storing objects by typed keys with the name
  */
 public class TemporaryBundleData {
     private final Map<String, Object> storage = new HashMap<>();
