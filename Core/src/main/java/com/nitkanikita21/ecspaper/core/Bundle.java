@@ -1,5 +1,7 @@
 package com.nitkanikita21.ecspaper.core;
 
+import com.nitkanikita21.ecspaper.core.util.data.TemporaryBundleData;
+
 import java.util.List;
 import java.util.Optional;
 

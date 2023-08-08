@@ -1,7 +1,7 @@
 package com.nitkanikita21.ecspaper.items;
 
 import com.nitkanikita21.ecspaper.core.Bundle;
-import com.nitkanikita21.ecspaper.core.TemporaryBundleData;
+import com.nitkanikita21.ecspaper.core.util.data.TemporaryBundleData;
 import de.tr7zw.nbtapi.NBTItem;
 import de.tr7zw.nbtapi.NBTList;
 import net.kyori.adventure.key.Key;
